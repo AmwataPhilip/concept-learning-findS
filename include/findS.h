@@ -34,7 +34,7 @@ public:
 	Hypothesis(strVec stringVector, bool hypoStatus) : attributes(stringVector), isPositive(hypoStatus) {}
 	~Hypothesis() = default;
 
-	bool compareHypotheses(Hypothesis hypo1, Hypothesis hypo2);
+	void compareHypotheses(Hypothesis currentHypo, Hypothesis newHypo);
 
 	strVec getAttibutes()
 	{
@@ -45,6 +45,13 @@ public:
 	{
 		return this->isPositive;
 	}
+
+	int size()
+	{
+		return this->attributes.size();
+	}
+
+	//TODO: overload [] operator for this class to return attributes at specified index
 };
 
 class findS
