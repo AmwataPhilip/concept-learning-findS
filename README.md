@@ -1,16 +1,14 @@
-# principal-components-analysis
+# concept-learning-findS
 
 ## Author: Philip Amwata
 
 ### Project Description
 
-Machine Learning (Unsupervised Learning - Clustering).
-Dimensionality Reduction method - Principal Component Analysis.
-From a data set containing 64 pairs of values, program
-computes the covariance matrix and identifies 2 Principal Components.
-The program also computes the Eigenvalues and Eigenvectors associated
-with the Principal Components as well as the Total variance,
-showcasing the proportion as a percentage that the 2 Principal Components explain.
+Machine Learning (Supervised Learning - Concept Learning).
+Dimensionality Reduction method - Classification.
+Use example table to get the function used to compute
+the specified trace in order to affirm that the trace
+was indeed derived from the input table.
 
 ---
 
@@ -26,6 +24,8 @@ showcasing the proportion as a percentage that the 2 Principal Components explai
 
 **test**: All test code files.
 
+**output**: All results from program execution.
+
 ---
 
 ### Makefile Instructions
@@ -40,4 +40,4 @@ showcasing the proportion as a percentage that the 2 Principal Components explai
 
 ### NOTES
 
-**Results for the Principal Component Analysis will be output to the console but a text file can also be found in the bin/ directory**
+**Results for the Concept Learning will be output to the console but a text file can also be found in the output directory**
