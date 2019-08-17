@@ -16,13 +16,10 @@
 namespace AMWPHI001
 {
 
-enum attributeType
-{
-	GENERAL = '?',
-	SPECIFIC = 'ɸ'
-};
+std::string GENERAL = "?", SPECIFIC = "ɸ";
 
-typedef std::vector<std::string> strVec;
+typedef std::vector<std::string>
+	strVec;
 
 class Hypothesis
 {
@@ -34,7 +31,7 @@ public:
 	Hypothesis(strVec stringVector, bool hypoStatus) : attributes(stringVector), isPositive(hypoStatus) {}
 	~Hypothesis() = default;
 
-	void compareHypotheses(Hypothesis currentHypo, Hypothesis newHypo);
+	void compareHypotheses(Hypothesis learningHypo);
 
 	strVec getAttibutes()
 	{
@@ -49,6 +46,26 @@ public:
 	int size()
 	{
 		return this->attributes.size();
+	}
+
+	void setAttribute(std::string attrib, int index)
+	{
+		this->attributes[index] = attrib;
+	}
+
+	void setStatus(bool status)
+	{
+		this->isPositive = status;
+	}
+
+	void printHypothesis()
+	{
+		std::cout << "< ";
+		for (size_t i = 0; i < this->size(); i++)
+		{
+			std::cout << this->getAttibutes()[i] << ", ";
+		}
+		std::cout << " >";
 	}
 
 	//TODO: overload [] operator for this class to return attributes at specified index

@@ -9,9 +9,24 @@
 
 using namespace AMWPHI001;
 
+void Hypothesis::compareHypotheses(Hypothesis learningHypo)
+{
+	for (size_t i = 0; i < learningHypo.size(); i++)
+	{
+		if (learningHypo.getAttibutes[i] == this->getAttibutes[i])
+		{
+			continue;
+		}
+		else
+		{
+			learningHypo.getAttibutes[i].setAttribute(this->getAttibutes[i], i);
+		}
+	}
+}
+
 void findS::runFindS()
 {
-	Hypothesis localHypo = this->getHypothesis();
+	Hypothesis learningHypo = this->getHypothesis();
 	std::vector<Hypothesis> localHypoVector = this->getExampleTable();
 	for (auto hypothesis : localHypoVector)
 	{
@@ -19,11 +34,10 @@ void findS::runFindS()
 		{
 			for (size_t i = 0; i < hypothesis.size(); i++)
 			{
+				hypothesis.compareHypotheses(learningHypo);
 			}
 		}
 	}
-}
 
-void Hypothesis::compareHypotheses(Hypothesis currentHypo, Hypothesis newHypo)
-{
+	hypothesis.printHypothesis();
 }
