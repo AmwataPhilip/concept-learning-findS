@@ -7,37 +7,38 @@
 
 #include "../include/findS.h"
 
+std::string GENERAL = "?", SPECIFIC = "ɸ";
+
 using namespace AMWPHI001;
-
-void Hypothesis::compareHypotheses(Hypothesis learningHypo)
+Hypothesis Hypothesis::compareHypotheses(std::vector<Hypothesis> localExampleTable)
 {
-	for (size_t i = 0; i < learningHypo.size(); i++)
-	{
-		if (learningHypo.getAttibutes[i] == this->getAttibutes[i])
-		{
-			continue;
-		}
-		else
-		{
-			learningHypo.getAttibutes[i].setAttribute(this->getAttibutes[i], i);
-		}
-	}
-}
+	Hypothesis localLearningHypo = localExampleTable[0];
 
-void findS::runFindS()
-{
-	Hypothesis learningHypo = this->getHypothesis();
-	std::vector<Hypothesis> localHypoVector = this->getExampleTable();
-	for (auto hypothesis : localHypoVector)
+	for (auto hypothesis : localExampleTable)
 	{
 		if (hypothesis.getStatus())
 		{
-			for (size_t i = 0; i < hypothesis.size(); i++)
+			for (int i = 0; i < this->size(); i++)
 			{
-				hypothesis.compareHypotheses(learningHypo);
+				if ((localLearningHypo.getAttibute(i) == hypothesis.getAttibute(i)) | localLearningHypo.getAttibute(i) == "?")
+				{
+					continue;
+				}
+				else
+				{
+					localLearningHypo.setAttribute(GENERAL, i);
+				}
 			}
 		}
 	}
+	return localLearningHypo;
+}
 
-	hypothesis.printHypothesis();
+Hypothesis findS::runFindS()
+{
+	Hypothesis learningHypo = this->getHypothesis();
+	std::vector<Hypothesis> localExampleTable = this->getExampleTable();
+	Hypothesis learnedHypo = learningHypo.compareHypotheses(localExampleTable);
+
+	return learnedHypo;
 }

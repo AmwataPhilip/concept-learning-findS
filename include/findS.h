@@ -10,14 +10,13 @@
 
 #include <stdio.h>
 #include <iostream>
+#include <cstdio>
 #include <vector>
 #include <string>
+#include <fstream>
 
 namespace AMWPHI001
 {
-
-std::string GENERAL = "?", SPECIFIC = "ɸ";
-
 typedef std::vector<std::string>
 	strVec;
 
@@ -31,11 +30,16 @@ public:
 	Hypothesis(strVec stringVector, bool hypoStatus) : attributes(stringVector), isPositive(hypoStatus) {}
 	~Hypothesis() = default;
 
-	void compareHypotheses(Hypothesis learningHypo);
+	Hypothesis compareHypotheses(std::vector<Hypothesis> exampleTable);
 
 	strVec getAttibutes()
 	{
 		return this->attributes;
+	}
+
+	std::string getAttibute(int i)
+	{
+		return this->attributes[i];
 	}
 
 	bool getStatus()
@@ -60,12 +64,7 @@ public:
 
 	void printHypothesis()
 	{
-		std::cout << "< ";
-		for (size_t i = 0; i < this->size(); i++)
-		{
-			std::cout << this->getAttibutes()[i] << ", ";
-		}
-		std::cout << " >";
+		printf("< %s, %s, %s, %s, %s, %s >\n", this->getAttibute(0).c_str(), this->getAttibute(1).c_str(), this->getAttibute(2).c_str(), this->getAttibute(3).c_str(), this->getAttibute(4).c_str(), this->getAttibute(5).c_str());
 	}
 
 	//TODO: overload [] operator for this class to return attributes at specified index
@@ -81,8 +80,6 @@ public:
 	findS(Hypothesis hypo, std::vector<Hypothesis> exampleTable) : hypothesis(hypo), trainingHypotheses(exampleTable) {}
 	~findS() = default;
 
-	void runFindS();
-
 	std::vector<Hypothesis> getExampleTable()
 	{
 		return this->trainingHypotheses;
@@ -92,8 +89,9 @@ public:
 	{
 		return this->hypothesis;
 	}
+
+	Hypothesis runFindS();
 };
 
-}; // namespace AMWPHI001
-
+};	 // namespace AMWPHI001
 #endif // !FINDS_H

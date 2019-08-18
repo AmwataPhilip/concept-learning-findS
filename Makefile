@@ -32,7 +32,7 @@ tester:
 
 #run
 run:
-	./bin/findS 6
+	./bin/findS
 
 .PHONY:
 	clean
