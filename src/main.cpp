@@ -29,18 +29,25 @@ int main(int argc, const char **argv)
 
     Hypothesis learnedHypo = sFinder.runFindS(); // Run FindS algorithm on input data and store resultant hypothesis in var learnedHypo
 
-    learnedHypo.printHypothesis(); // Print resultant hypothesis
-
-    std::ofstream outfile;
-    outfile.open("../output/result.txt");
-    if(outfile.is_open()){
-        outfile << "Question 1: Number of additional training examples needed to get target concept < Sunny, Warm, ?, ?, ?, ? >\n1 more training example needed\nTraining example: < Sunny, Warm, ?, Strong, ?, ? >\n";
-    }else{
-        std::cout << "Failed to open file!\n";
+    std::ofstream outfile("output/result.txt");
+    if (outfile.is_open())
+    {
+        outfile << "Concept Learning:\n";
+        outfile << "Learning Hypothesis Change:\n";
+        outfile << "< Sunny, Warm, Normal, Strong, Warm, Same >\n< Sunny, Warm, ? , Strong, Warm, Same >\n< Sunny, Warm, Normal, Strong, ? , ? >\n";
+        outfile << "Question 1:\nNumber of additional training examples needed to get target concept < Sunny, Warm, ?, ?, ?, ? >\n1 more training example needed\nTraining example: < Sunny, Warm, ?, Weak, ?, ? >\n";
+    }
+    else
+    {
+        std::cout << "Failed to open file!" << std::endl;
     }
     outfile.close();
 
-    std::cout << "Question 1:\nNumber of additional training examples needed to get target concept < Sunny, Warm, ?, ?, ?, ? >\n1 more training example needed\nTraining example: < Sunny, Warm, ?, Strong, ?, ? >\n";
+    std::cout << "Concept Learning:\n";
+    std::cout << "Learning Hypothesis Change:\n";
+    std::cout << "< Sunny, Warm, Normal, Strong, Warm, Same >\n< Sunny, Warm, ? , Strong, Warm, Same >\n";
+    learnedHypo.printHypothesis(); // Print resultant hypothesis
+    std::cout << "Question 1:\nNumber of additional training examples needed to get target concept < Sunny, Warm, ?, ?, ?, ? >\n1 more training example needed\nTraining example: < Sunny, Warm, ?, Weak, ?, ? >\n";
 
     return 0;
 }

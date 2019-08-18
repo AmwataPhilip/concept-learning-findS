@@ -1,0 +1,9 @@
+Concept Learning:
+Learning Hypothesis Change:
+< Sunny, Warm, Normal, Strong, Warm, Same >
+< Sunny, Warm, ? , Strong, Warm, Same >
+< Sunny, Warm, Normal, Strong, ? , ? >
+Question 1:
+Number of additional training examples needed to get target concept < Sunny, Warm, ?, ?, ?, ? >
+1 more training example needed
+Training example: < Sunny, Warm, ?, Weak, ?, ? >

@@ -10,6 +10,7 @@
 std::string GENERAL = "?", SPECIFIC = "ɸ";
 
 using namespace AMWPHI001;
+
 Hypothesis Hypothesis::compareHypotheses(std::vector<Hypothesis> localExampleTable)
 {
 	Hypothesis localLearningHypo = localExampleTable[0];
